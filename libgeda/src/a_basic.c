@@ -410,7 +410,9 @@ GList *o_read_buffer (TOPLEVEL *toplevel, GList *object_list,
 	    o_attrib_thaw_hooks (toplevel, new_obj);
             goto error;
 	  }
-          new_object_list = g_list_concat (new_object_list, new_attrs_list);
+
+	  new_attrs_list = g_list_reverse(new_attrs_list);
+          new_object_list = g_list_concat (new_attrs_list, new_object_list);
 	  o_attrib_thaw_hooks (toplevel, new_obj);
 
           /* by now we have finished reading all the attributes */
